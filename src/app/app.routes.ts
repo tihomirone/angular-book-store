@@ -15,5 +15,6 @@ export const routes: Routes = [
     {path: 'profile', component: ProfileComponent},
     {path: 'admin', component: AdminComponent},
     {path: '404', component: NotFoundComponent},
-    {path: '401', component: UnauthorizedComponent}
+    {path: '401', component: UnauthorizedComponent},
+    {path: '**', component: NotFoundComponent}
 ];

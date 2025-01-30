@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div class="container mt-5" style="max-width: 30%;">
+    <div class="card ms-auto me-auto p-3 shadow-lg custom-card">
+        <fa-icon [icon]="faUser" class="ms-auto me-auto user-icon"></fa-icon>
+
+        <form #f="ngForm" (ngSubmit)="f.form.valid && login()">
+            @if (errorMessage) {
+            <div class="alert alert-danger">
+                {{errorMessage}}
+            </div>
+            }
+    
+            <div class="form-group">
+                <label for="username">
+                    Username
+                </label>
+                <input type="text" id="username" name="username" class="form-control" required [(ngModel)]="user.username" #username="ngModel"/>
+                @if (!username.valid && f.submitted) {
+                <div class="alert alert-danger">
+                    Username is required!
+                </div>
+                }
+            </div>
+            <div class="form-group">
+                <label for="password">
+                    Password
+                </label>
+                <input type="password" id="password" name="password" class="form-control" required [(ngModel)]="user.password" #password="ngModel"/>
+                @if (!password.valid && f.submitted) {
+                <div class="alert alert-danger">
+                    Password is required!
+                </div>
+                }
+            </div>
+            <button type="sumbit" class="btn btn-success w-100 mt-3" style="background-color: #50a057;">
+                Sign In
+            </button>
+        </form>
+
+        <a [routerLink]="['/register']" class="btn btn-link" style="color: darkgrey;">
+            Create an account.
+        </a>
+    </div>
+</div>

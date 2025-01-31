@@ -9,14 +9,18 @@
   </a>
 
   <div class="navbar-nav me-auto">
+    @if (isAdmin()) {
     <li class="nav-item">
       <a [routerLink]="['/admin']" routerLinkActive="active" class="nav-link">Admin</a>
     </li>
+    }
+
     <li class="nav-item">
       <a [routerLink]="['/home']" routerLinkActive="active" class="nav-link">Home</a>
     </li>
   </div>
 
+  @if (!currentUser?.id) {
   <div class="navbar-nav ms-auto">
     <li class="nav-item">
       <a [routerLink]="['/register']" routerLinkActive="active" class="nav-link">Sign Up</a>
@@ -25,6 +29,21 @@
       <a [routerLink]="['/login']" routerLinkActive="active" class="nav-link">Sign In</a>
     </li>
   </div>
+  }
+
+  @if (currentUser?.id) {
+    <div class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a [routerLink]="['/profile']" routerLinkActive="active" class="nav-link">
+          {{currentUser.username}}
+        </a>
+      </li>
+      <li class="nav-item me-1">
+        <a (click)="logout()" class="nav-link" style="cursor: pointer;">Sign out</a>
+      </li>
+    </div>
+    }
+
 </div>
 
 <router-outlet />

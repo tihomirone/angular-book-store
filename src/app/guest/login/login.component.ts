@@ -28,11 +28,14 @@ export class LoginComponent {
   }
 
   login() {
-    this.authenticationService.login(this.user).subscribe(data => {
-      this.router.navigate(['/profile']);
-    }, err => {
-      this.errorMessage = "Username or password is incorrect!"
-      console.log(err);
+    this.authenticationService.login(this.user).subscribe({
+      next: (data) => {
+        this.router.navigate(['/profile']);
+      },
+      error: (err) => {
+        this.errorMessage = "Username or password is incorrect!";
+        console.log(err);
+      }
     });
   }
 }

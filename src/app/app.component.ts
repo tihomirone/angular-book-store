@@ -14,7 +14,7 @@ import { Role } from './model/role.enum';
 export class AppComponent {
   title = 'angular-book-seller';
 
-  currentUser: User = new User();
+  currentUser: User | null = new User();
 
   constructor(private authenticationService: AuthenticationService, private router: Router) {
     this.authenticationService.currentUser.subscribe(data => {

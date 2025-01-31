@@ -28,15 +28,18 @@ export class RegisterComponent {
   }
 
   register(): void {
-    this.authenticationService.register(this.user).subscribe(data => {
-      this.router.navigate(['/login']);
-    }, err => {
-      if (err?.status === 409) {
-        this.errorMessage = 'Username already exists.';
-      } else {
-        this.errorMessage = 'Unexpected error occured!';
-        console.log(err);
-      }
+    this.authenticationService.register(this.user).subscribe({
+      next: (data) => {
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        if (err?.status === 409) {
+          this.errorMessage = 'Username already exists.';
+        } else {
+          this.errorMessage = 'Unexpected error occured!';
+          console.log(err);
+        }
+      },
     });
   }
 }

@@ -26,4 +26,8 @@ export class AdminComponent {
   createBookRequest() {
     this.child?.showBookModal();
   }
+
+  saveBookWatcher(book: Book) {
+    this.bookList.push(book);
+  }
 }

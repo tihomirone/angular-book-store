@@ -14,6 +14,7 @@ export class AdminComponent {
 
   bookList: Array<Book> = [];
   selectedBook: Book = new Book;
+  errorMessage: string = "";
 
   @ViewChild(BookComponent) child: BookComponent | undefined;
   constructor(private bookService: BookService) {}
@@ -41,5 +42,15 @@ export class AdminComponent {
     } else {
       this.bookList.push(book);
     }
+  }
+
+  deleteBookRequest(item: Book, ind: number) {
+    this.bookService.deleteBook(item).subscribe({
+      next: (data) => {
+      this.bookList.splice(ind, 1);
+    }, error: (err) => {
+      this.errorMessage = "Unexpected error occurred!";
+      console.log(err);
+    }});
   }
 }

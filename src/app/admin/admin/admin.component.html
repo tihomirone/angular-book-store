@@ -19,6 +19,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">Price</th>
                             <th scope="col">Author</th>
+                            <th scope="col">Description</th>
                             <th scope="col">Date</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -30,9 +31,10 @@
                             <td>{{item.title}}</td>
                             <td>{{item.price | currency: 'USD'}}</td>
                             <td>{{item.author}}</td>
+                            <td>{{item.description}}</td>
                             <td>{{item.createTime | date: 'medium'}}</td>
                             <td>
-                                <button class="btn btn-primary me-1">Edit</button>
+                                <button class="btn btn-primary me-1" (click)="editBookRequest(item)">Edit</button>
                                 <button class="btn button-danger">Delete</button>
                             </td>
                         </tr>
@@ -44,4 +46,4 @@
     </div>
 </div>
 
-<app-book (save)="saveBookWatcher($event)"></app-book>
+<app-book [book]="selectedBook" (save)="saveBookWatcher($event)"></app-book>

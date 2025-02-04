@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "config": "node set-env.js",
+    "start": "node server.js",
     "build": "ng build",
+    "build-prod": "npm exec ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -24,13 +26,15 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "jquery": "^3.7.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.1.4",
+    "@angular-devkit/build-angular": "^19.1.5",
     "@angular/cli": "^19.1.4",
     "@angular/compiler-cli": "^19.1.0",
     "@types/jasmine": "~5.1.0",

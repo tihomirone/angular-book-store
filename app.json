@@ -1,0 +1,8 @@
+{
+    "name": "angular-book-seller",
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        }
+    ]
+}

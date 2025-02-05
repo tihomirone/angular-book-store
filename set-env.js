@@ -4,6 +4,8 @@ require("dotenv").config();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+console.log("Is production: " + isProduction);
+
 const targetPath = isProduction ? `./src/environments/environment.prod.ts` : `./src/environments/environment.development.ts`;
 
 const envFileContent = `
@@ -13,6 +15,8 @@ const envFileContent = `
     };
 
 `;
+
+console.log("envFileContent: " + envFileContent);
 
 writeFile(targetPath, envFileContent, (err) => {
     if (err) {
